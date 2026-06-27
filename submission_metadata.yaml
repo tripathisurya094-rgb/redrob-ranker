@@ -10,7 +10,7 @@ team_members:
     email: "primary@example.com"
     role: "ML Engineer"
 
-github_repo: "https://github.com/YOUR_USERNAME/redrob-ranker"
+
 sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
@@ -58,3 +58,4 @@ declarations:
   no_collusion: true
   honeypot_check_done: true
   reproduction_tested: true
+github_repo: "https://github.com/tripathisurya094-rgb/redrob-ranker"
