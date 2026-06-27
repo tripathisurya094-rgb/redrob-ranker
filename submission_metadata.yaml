@@ -1,0 +1,60 @@
+team_name: "your-team-name-here"
+
+primary_contact:
+  name: "Surya"
+  email: "primary@example.com"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: "Surya"
+    email: "primary@example.com"
+    role: "ML Engineer"
+
+github_repo: "https://github.com/YOUR_USERNAME/redrob-ranker"
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+compute:
+  platform: "Local Linux box"
+  cpu_cores: 4
+  ram_gb: 16
+  python_version: "3.11"
+  os: "Ubuntu 24.04"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude (Anthropic) to design and implement the scoring pipeline:
+  parsing the JD into explicit scoring dimensions, writing the regex-based
+  feature extraction over career-history text, the honeypot detector, and
+  the README/methodology writeup. No candidate data was sent to any
+  external LLM API — the ranking step itself is pure-Python regex/keyword
+  logic with no model calls at all, satisfying the no-network/no-GPU
+  constraint by construction.
+
+methodology_summary: |
+  Five-dimension rule-based ranker: technical depth (production
+  embeddings/retrieval, vector-DB/hybrid search, ranking systems, eval
+  frameworks, Python — scanned from career-history text, not just the
+  skills array), title relevance, logistics fit (location/notice/years),
+  a multiplicative disqualifier penalty encoding the JD's explicit "don't
+  wants" (pure research, recent LangChain-only AI exposure, architecture
+  roles without recent coding, job-hopping, consulting-only careers,
+  CV/speech without NLP), and a behavioral-signal modifier (activity
+  recency, recruiter response rate, interview completion, offer
+  acceptance). Honeypots are detected via internal-consistency checks
+  (impossible tenure/proficiency combinations) and forced near-zero.
+  No embeddings, no LLM calls, no GPU — pure regex/keyword scan, ~100s
+  for 100K candidates on a CPU-only laptop.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true

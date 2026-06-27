@@ -1,0 +1,6 @@
+# This ranker uses only the Python standard library (re, json, gzip, csv,
+# datetime, statistics, argparse) to guarantee it runs CPU-only, offline,
+# and within the 16GB/5-minute budget with zero dependency-install risk
+# inside the grader's sandbox. Pinning Python itself instead of packages.
+#
+# python_requires >= 3.9
