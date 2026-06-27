@@ -1,2 +1,5 @@
 candidates.jsonl
 *.jsonl
+.idea/
+__pycache__/
+*.pyc
